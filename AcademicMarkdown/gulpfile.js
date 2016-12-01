@@ -20,7 +20,7 @@ gulp.task("clean", () => {
 })
 
 gulp.task("build", ["clean"], shell.task([
-    "fable AcademicMarkdown.fsproj -s true -m amd"
+    "fable"
 ]));
 
 gulp.task("test", ["build"], () => {

@@ -1,5 +1,6 @@
 # Ignore all JavaScript files
 *.js
+*.js.map
 
 # Except for gulp tasks
 !gulpfile.js
