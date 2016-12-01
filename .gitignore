@@ -1,0 +1,13 @@
+# Ignore all JavaScript files
+*.js
+
+# Except for gulp tasks
+!gulpfile.js
+
+# Ignore all npm dependencies
+node_modules/
+
+# Ignore all others
+.vs/
+bin/
+obj/
