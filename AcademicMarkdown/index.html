@@ -2,9 +2,38 @@
 
 <head>
     <title>Academic Markdown</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
 </head>
 
 <body>
+    <div class = "row">
+        <h1>Academic Markdown Editor</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="source">Markdown:</label>
+                <textarea class="form-control" rows="20" id="amdInput">123</textarea>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="preview">Preivew:</label>
+                <textarea class="form-control" rows="20" id="previewOutput"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-block" id="previewBtn">Preivew</button>
+
+    <div class="row">
+        <div id="previewCanvas"></div>
+    </div>
+
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/core-js/client/core.min.js"></script>
     <script src="./node_modules/requirejs/require.js"></script>
     <script>

@@ -51,6 +51,7 @@
     <Compile Include="Parser.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
+    <None Include="index.html" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="node_modules/fable-core/Fable.Core.dll" />
