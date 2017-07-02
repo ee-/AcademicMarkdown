@@ -1,9 +1,0 @@
-{   
-    "ecma": "es2015",
-    "module": "amd",
-    "projFile": "./AcademicMarkdown.fsproj",
-    "sourceMaps": true,
-    "scripts": {
-        "prebuild": "npm install"
-    }
-}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>A.MD - Academic Markdown Editor</title>
+    <link rel="stylesheet" href="./node_modules/handsontable/dist/handsontable.full.min.css"></link>
+    <link rel="stylesheet" href="./assets/css/readable/bootstrap.min.css" id="bootstrap-theme"></link>
+    <link rel="stylesheet" href="./assets/css/A.MD.css"></link>
+    <link rel="stylesheet" href="./assets/lib/highlight.js/github.css"></link>
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css"></link>
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./node_modules/golden-layout/src/css/goldenlayout-base.css" />
+    <link type="text/css" rel="stylesheet" href="./node_modules/golden-layout/src/css/goldenlayout-light-theme.css" />
+    <script src="./node_modules/golden-layout/dist/goldenlayout.min.js"></script>
+    <script src="./assets/js/editor-layout.js"></script>
+</head>
+
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <p class="navbar-btn">
+
+                        <div class="btn-group">
+                            <a href="#" id="bold-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Bold"><i class="fa fa-bold" aria-hidden="true"></i></a>
+                            <a href="#" id="italic-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Italic"><i class="fa fa-italic" aria-hidden="true"></i></a>
+                            <a href="#" id="underline-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Underline"><i class="fa fa-underline" aria-hidden="true"></i></a>
+                            <a href="#" id="strikethrough-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Strikethrough"><i class="fa fa-strikethrough" aria-hidden="true"></i></a>
+                            <a href="#" id="code-inline-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Inline-Code"><i class="fa fa-code" aria-hidden="true"></i></a>
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="#" id="undo-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Undo"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                            <a href="#" id="redo-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Redo"><i class="fa fa-repeat" aria-hidden="true"></i></a>
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="#" id="link-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Insert Hyperlink"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            <a href="#" id="image-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Insert Image"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+                            <a href="#" id="youtube-btn" class="btn btn-default hidden" data-toggle="tooltip" data-placement="bottom" data-original-title="Insert Youtube Video"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                            <a href="#" id="icon-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Insert Icon"><i class="fa fa-font-awesome" aria-hidden="true"></i></a>
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="#" id="table-excel" class="btn btn-default" data-toggle="modal" data-target="#tableTool" data-placement="bottom"
+                                data-original-title="Advanced Table Tool"><i class="fa fa-table" aria-hidden="true"></i></a>
+                            <a href="#" id="table-fit" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Fit Table"><i class="fa fa-retweet" aria-hidden="true"></i></a>
+                        </div>
+                    </p>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="navbar-btn">
+                        <div class="btn-group">
+                            <a href="#" id="pdf-btn" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="Export as PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-default" data-toggle="dropdown">Theme</a>
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="amd-theme-0">Readable</a></li>
+                                <li><a href="#" id="amd-theme-1">Lumen</a></li>
+                                <li><a href="#" id="amd-theme-2">Paper</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div id="layout-container"></div>
+<!--<div class="container-fluid ">
+        <div class="col-md-6">
+            <div id="monaco-editor-container" style="height:85vh;">
+            </div>
+        </div>
+        <div id="markdown-output-container" class="col-md-6" style="height:85vh; overflow-y: scroll;">
+
+        </div>
+    </div>-->
+
+<!-- Modal -->
+<div class="modal fade" id="tableTool" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Table Creation Tool</h4>
+            </div>
+            <div class="modal-body">
+                <div id="table-tool-body" style="overflow: auto;">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <label class="radio-inline"><input type="radio" name="tableTypeRadio" checked>Pipe Table</label>
+                    <label class="radio-inline"><input type="radio" name="tableTypeRadio">Excel Table</label>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="insert-table-btn">Insert</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--For Electron jQuery Work-around-->
+<script>
+    if (typeof module === 'object') { window.module = module; module = undefined; }
+
+</script>
+
+<!--3rd Party Library-->
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/core-js/client/core.min.js"></script>
+<script src="./node_modules/underscore/underscore-min.js"></script>
+<script src="./node_modules/handsontable/dist/handsontable.js"></script>
+<script src="./node_modules/file-saver/FileSaver.min.js"></script>
+
+<!--flowchart.js-->
+
+<script src="./node_modules/flowchart.js/site/raphael-min.js"></script>
+<script src="./node_modules/flowchart.js/site/flowchart-latest.js"></script>
+
+<!--bootstrap tooltip-->
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+</script>
+
+<!--highlight.js-->
+<script src="./assets/lib/highlight.js/highlight.pack.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+
+</script>
+<script src="./node_modules/requirejs/require.js"></script>
+<!--Monaco Editor Loader-->
+<script src="./assets/js/editor-getting-started.js"></script>
+<script src="./assets/js/monaco-editor.js"></script>
+<script src="./assets/js/editor-toolbar.js"></script>
+<script src="./assets/js/editor-table-tool.js"></script>
+<script src="./assets/js/utility.js"></script>
+<!--MathJax-->
+<script type="text/javascript">
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]],
+            displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+            processEscapes: true
+        }
+    };
+
+</script>
+<script type="text/javascript" async src="./node_modules/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<body>
+
+    <!--FSharpProject-->
+    <script>
+        requirejs.config({
+            // Set the baseUrl to the path of the compiled JS code
+            baseUrl: '.',
+            paths: {
+                // Explicit path to core lib (relative to baseUrl, omit .js)
+                'fable-core': './node_modules/fable-core'
+            }
+        });
+        // Load the entry file of the app (use array, omit .js)
+        requirejs(["assets/js/fsharp/UserInterface"]);
+    </script>
+</body>
+
+</html>

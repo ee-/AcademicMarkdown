@@ -1,0 +1,31 @@
+/*css stylesheet for Academic Markdown Editor*/
+
+/*make highlight.js able to display inline code*/
+:not(pre) > code { 
+    display: inline !important; 
+}
+
+#placeholder { margin-top: 70px; }
+
+.navbar {
+    margin-bottom: 0;
+}
+
+body{
+    overflow: hidden
+}
+#markdown-output-container {
+    background-color: #FFFDE7;
+    height:100%; 
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+#layout-container{
+    height: calc(100vh - 70px);
+}
+.modal-body
+{
+height: 550px;
+overflow: hidden;
+}

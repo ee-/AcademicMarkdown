@@ -1,2 +1,3 @@
-# AcademicMarkdown
-An academic markdown language designed for academics to aid their publication and teaching
+﻿Break into blocks(lines, paragraphs)
+
+Replace element wise elements
